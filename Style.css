@@ -1,0 +1,195 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(
+        -45deg,
+        #0f172a,
+        #1e293b,
+        #0ea5e9,
+        #22c55e
+    );
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+.calculator {
+    width: 340px;
+    padding: 25px;
+    border-radius: 20px;
+
+    position: relative;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        inset 0 1px 1px rgba(255, 255, 255, 0.2);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* floating effect */
+.calculator:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
+
+.calculator::before {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: 22px;
+    /*background: linear-gradient(45deg, #38bdf8, #22c55e, #a855f7);*/
+    z-index: -1;
+    filter: blur(12px);
+}
+
+#display {
+    width: 100%;
+    height: 70px;
+    background: linear-gradient(135deg, #0f172a, #111827);
+    color: #fff;
+    font-size: 32px;
+    text-align: right;
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 15px;
+
+    /* animation */
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+/* glow when active */
+#display:focus {
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.8);
+    transform: scale(1.02);
+}
+
+/* Toggle button */
+.toggle-btn {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    background: #38bdf8;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.buttons-normal {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 60px;
+    gap: 12px;
+}
+
+button {
+    height: 60px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(145deg, #374151, #1f2933);
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+
+    transition: 
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.2s ease;
+}
+
+/* hover effect */
+button:hover {
+    background: linear-gradient(145deg, #4b5563, #374151);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* click (press) effect */
+button:active {
+    transform: scale(0.95);
+    box-shadow: inset 0 4px 10px rgba(0,0,0,0.4);
+}
+
+
+/* Scientific section hidden */
+.scientific {
+    display: none;
+    animation: slideDown 0.4s ease forwards;
+}
+
+/* Expanded vertical mode */
+.calculator.scientific-mode {
+    width: 360px;
+}
+
+/* Show scientific buttons when active */
+.calculator.scientific-mode .scientific {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.operator {
+    color: #38bdf8;
+}
+
+/* = button → horizontal */
+.equal {
+    grid-column: span 2;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* pulse on hover */
+.equal:hover {
+    animation: pulse 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+    from {
+        box-shadow: 0 0 10px rgba(34,197,94,0.6);
+    }
+    to {
+        box-shadow: 0 0 20px rgba(34,197,94,1);
+    }
+}
+
+
+
+

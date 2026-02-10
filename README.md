@@ -16,7 +16,7 @@ A scientific and responsive calculator web application that performs both basic 
 
 ## 📂 Project Structure
 Calculator/
-│── index.html
+│── Calculator.html
 │── style.css
 │── script.js
 │── README.md
